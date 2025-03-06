@@ -68,8 +68,65 @@ export const listSchools = asyncHandler(async (req, res, next) => {
     res.status(200).json(new ApiResponse(200, sortedSchools, "Schools sorted by proximity."));
 });
 
+/**
+ * @desc    Get a school by ID
+ * @route   GET /getSchool/:id
+ * @access  Public
+ */
+export const getSchoolById = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
 
+    // ✅ Find school by ID
+    const school = await School.findByPk(id);
 
+    if (!school) {
+        return next(new ApiError(404, "School not found"));
+    }
+
+    res.status(200).json(new ApiResponse(200, school, "School retrieved successfully."));
+});
+
+/**
+ * @desc    Delete a school by ID
+ * @route   DELETE /deleteSchool/:id
+ * @access  Public
+ */
+export const deleteSchoolById = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+
+    // ✅ Find school by ID
+    const school = await School.findByPk(id);
+
+    if (!school) {
+        return next(new ApiError(404, "School not found"));
+    }
+
+    // ✅ Delete school
+    await school.destroy();
+
+    res.status(200).json(new ApiResponse(200, {}, "School deleted successfully."));
+});
+
+/**
+ * @desc    Delete all schools
+ * @route   DELETE /deleteAllSchools
+ * @access  Public
+ */
+export const deleteAllSchools = asyncHandler(async (req, res, next) => {
+    // ✅ Delete all schools
+    await School.destroy({ where: {} });
+
+    res.status(200).json(new ApiResponse(200, {}, "All schools deleted successfully."));
+});
+
+/**
+ * Haversine Formula: Calculates the distance between two coordinates on Earth.
+ * @param {number} lat1 - User's latitude
+ * @param {number} lon1 - User's longitude
+ * @param {number} lat2 - School's latitude
+ * @param {number} lon2 - School's longitude
+ * @returns {number} Distance in kilometers
+ */
 const getDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = angle => (angle * Math.PI) / 180;
     const R = 6371; // Earth's radius in km

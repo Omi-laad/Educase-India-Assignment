@@ -28,7 +28,7 @@ This project provides a set of RESTful APIs built using **Node.js**, **Express.j
 
 ### 1. **Add a School**
 
-- **Endpoint**: `/addSchool`
+- **Endpoint**: `api/addSchool`
 - **Method**: `POST`
 - **Request Body**:
   ```json
@@ -55,7 +55,7 @@ This project provides a set of RESTful APIs built using **Node.js**, **Express.j
 
 ### 2. **List Schools by Proximity**
 
-- **Endpoint**: `/listSchools`
+- **Endpoint**: `api/listSchools`
 - **Method**: `GET`
 - **Query Parameters**:
   ```json
@@ -79,7 +79,7 @@ This project provides a set of RESTful APIs built using **Node.js**, **Express.j
 
 ### 3. **Get School by ID**
 
-- **Endpoint**: `/getSchool/:id`
+- **Endpoint**: `api/getSchool/:id`
 - **Method**: `GET`
 - **Response**:
   ```json
@@ -94,7 +94,7 @@ This project provides a set of RESTful APIs built using **Node.js**, **Express.j
 
 ### 4. **Delete School by ID**
 
-- **Endpoint**: `/deleteSchool/:id`
+- **Endpoint**: `api/deleteSchool/:id`
 - **Method**: `DELETE`
 - **Response**:
   ```json
@@ -103,7 +103,7 @@ This project provides a set of RESTful APIs built using **Node.js**, **Express.j
 
 ### 5. **Delete All Schools**
 
-- **Endpoint**: `/deleteAllSchools`
+- **Endpoint**: `api/deleteAllSchools`
 - **Method**: `DELETE`
 - **Response**:
   ```json

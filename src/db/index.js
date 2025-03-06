@@ -1,11 +1,12 @@
 import { Sequelize } from "sequelize";
-import { DB_NAME, DB_HOST, DB_USER, DB_PASSWORD } from "../constants.js";
+import { DB_NAME, DB_HOST, DB_USER, DB_PASSWORD,DB_PORT } from "../constants.js";
 
 // ✅ Correct order of parameters
 const connectDb = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     host: DB_HOST,
     dialect: "mysql",
     logging: false,  
+    DB_PORT
 });
 
 const testDbConnection = async () => {
